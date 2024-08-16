@@ -1,0 +1,86 @@
+{
+  "name": "fm-tip-calculator-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "fix": "concurrently --raw npm:fix:*",
+    "fix:code": "eslint --cache --cache-location ./node_modules/.cache/eslint --fix \"**/*.[jt]s?(x)\"",
+    "fix:css": "stylelint \"**/*.css\" --cache --cache-location ./node_modules/.cache/stylelint --fix --allow-empty-input",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.{css,js,jsx,cjs,mjs,ts,tsx,md,mdx,astro,json}\"",
+    "lint": "concurrently --raw npm:lint:*",
+    "lint:code": "eslint --cache --cache-location ./node_modules/.cache/eslint \"**/*.[jt]s?(x)\"",
+    "lint:css": "stylelint \"**/*.css\" --cache --cache-location ./node_modules/.cache/stylelint --ignore-path .gitignore --allow-empty-input",
+    "prepare": "husky",
+    "preview": "vite preview",
+    "test": "vitest --run"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/compat": "^1.1.1",
+    "@eslint/js": "^9.9.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-prettier": "^8.1.0",
+    "@svgr/plugin-svgo": "^8.1.0",
+    "@svgr/rollup": "^8.1.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^8.2.2",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "eslint-plugin-vitest": "^0.5.4",
+    "globals": "^15.9.0",
+    "husky": "^9.1.4",
+    "jsdom": "^24.1.1",
+    "lint-staged": "^15.2.9",
+    "micromatch": "^4.0.7",
+    "postcss-import": "^16.1.0",
+    "postcss-nesting": "^13.0.0",
+    "postcss-preset-env": "^10.0.1",
+    "postcss-sort-media-queries": "^5.2.0",
+    "prettier": "^3.3.3",
+    "stylelint": "^16.8.2",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-order": "^6.0.4",
+    "vite": "^5.4.1",
+    "vite-plugin-svgr": "^4.2.0",
+    "vitest": "^2.0.5"
+  },
+  "browserslist": {
+    "production": [
+      ">= 0.5%",
+      "last 2 major versions",
+      "not dead",
+      "Chrome >= 64",
+      "Edge >= 79",
+      "Firefox >= 67",
+      "Firefox ESR",
+      "opera >= 51",
+      "iOS >= 12",
+      "Safari >= 12",
+      "not Explorer <= 11",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 edge version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "volta": {
+    "node": "20.16.0"
+  }
+}
