@@ -1,0 +1,22 @@
+:root {
+  background-color: hsl(185deg 41% 84%);
+  color: hsl(186deg 14% 43%);
+  font-family: 'Space Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-synthesis: none;
+  font-weight: 700;
+  line-height: 1.5;
+  text-rendering: optimizelegibility;
+}
+
+.attribution {
+  font-size: 0.6875rem;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(183deg 100% 15%);
+  text-decoration: none;
+}
