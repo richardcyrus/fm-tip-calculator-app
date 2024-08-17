@@ -1,6 +1,120 @@
+/* #region resets */
+/* stylelint-disable property-no-vendor-prefix */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  color: currentcolor;
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-style: italic;
+  height: auto;
+  max-width: 100%;
+  shape-margin: 0.75rem;
+  vertical-align: middle;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+optgroup,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* Reset Fieldset and Legend */
+fieldset {
+  border: 0;
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+}
+
+legend {
+  padding-inline: 0;
+}
+/* #endregion */
+/* stylelint-enable */
+
 :root {
-  background-color: hsl(185deg 41% 84%);
-  color: hsl(186deg 14% 43%);
+  --color-strong-cyan: hsl(172deg 67% 45%); /* #26C2AE */
+  --color-very-dark-cyan: hsl(183deg 100% 15%); /* #00474B */
+  --color-dark-grayish-cyan: hsl(186deg 14% 43%); /* #5E7A7D */
+  --color-grayish-cyan: hsl(186deg 14% 56%); /* #7F9D9F */
+  --color-light-grayish-cyan: hsl(185deg 41% 84%); /* #C5E4E7 */
+  --color-very-light-grayish-cyan: hsl(189deg 41% 97%); /* #F3F9FA */
+  --color-white: hsl(0deg 0% 100%);
+
+  background-color: var(--color-light-grayish-cyan);
+  color: var(--color-dark-grayish-cyan);
   font-family: 'Space Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11,12 +125,27 @@
   text-rendering: optimizelegibility;
 }
 
+body {
+  margin: 0;
+}
+
 .attribution {
   font-size: 0.6875rem;
+  margin-block: 1rem;
   text-align: center;
 }
 
 .attribution a {
   color: hsl(183deg 100% 15%);
   text-decoration: none;
+}
+
+.sr-only:not(:focus, :active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
