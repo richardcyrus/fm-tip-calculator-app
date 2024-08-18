@@ -28,57 +28,57 @@ function App() {
               title="Bill amount"
               type="text"
             />
+            <div className="invalid-feedback">Can&apos;t be zero</div>
           </div>
           <fieldset className="tip-selections">
             <legend className="legend">Select Tip %</legend>
-            <div className="radio-control">
+            <label htmlFor="five-percent" className="radio-control">
               <input
                 id="five-percent"
                 name="tip-percent"
                 type="radio"
                 value="5"
               />
-              <label htmlFor="five-percent">5%</label>
-            </div>
-            <div className="radio-control">
+              5%
+            </label>
+            <label htmlFor="ten-percent" className="radio-control">
               <input
                 id="ten-percent"
                 name="tip-percent"
                 type="radio"
                 value="10"
               />
-              <label htmlFor="ten-percent">10%</label>
-            </div>
-            <div className="radio-control">
+              10%
+            </label>
+            <label htmlFor="fifteen-percent" className="radio-control">
               <input
                 id="fifteen-percent"
                 name="tip-percent"
                 type="radio"
                 value="15"
               />
-              <label htmlFor="fifteen-percent">15%</label>
-            </div>
-            <div className="radio-control">
+              15%
+            </label>
+            <label htmlFor="twentyfive-percent" className="radio-control">
               <input
                 id="twentyfive-percent"
                 name="tip-percent"
                 type="radio"
                 value="25"
               />
-              <label htmlFor="twentyfive-percent">25%</label>
-            </div>
-            <div className="radio-control">
+              25%
+            </label>
+            <label htmlFor="fifty-percent" className="radio-control">
               <input
                 id="fifty-percent"
                 name="tip-percent"
                 type="radio"
                 value="50"
               />
-              <label htmlFor="fifty-percent">50%</label>
-            </div>
-            <div>
+              50%
+            </label>
+            <div className="input-tip">
               <input
-                className="input-tip"
                 id="custom-percent"
                 inputMode="numeric"
                 name="custom-tip-percent"
@@ -92,7 +92,6 @@ function App() {
           </fieldset>
           <div className="form-control">
             <label htmlFor="num-people">Number of People</label>
-            <div className="error">Can&apos;t be zero</div>
             <input
               className="input people"
               id="num-people"
@@ -104,6 +103,7 @@ function App() {
               title="Number of people"
               type="text"
             />
+            <div className="invalid-feedback">Can&apos;t be zero</div>
           </div>
         </form>
         <div className="splitter-results">
@@ -125,7 +125,7 @@ function App() {
               <p>$0.00</p>
             </div>
           </div>
-          <div className="form-control">
+          <div className="control">
             <button
               className="button btn-reset"
               form="tip-calculator"

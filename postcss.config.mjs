@@ -3,6 +3,9 @@ export default {
     'postcss-import': {},
     'postcss-nesting': {},
     'postcss-sort-media-queries': {},
-    'postcss-preset-env': {},
+    'postcss-preset-env': {
+      stage: 3,
+      minimumVendorImplementations: 2,
+    },
   },
 }

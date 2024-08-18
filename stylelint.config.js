@@ -17,6 +17,7 @@ export default {
     ],
     'number-max-precision': 6,
     'order/properties-alphabetical-order': true,
+    'property-no-vendor-prefix': null,
     'selector-class-pattern': null,
   },
 }
