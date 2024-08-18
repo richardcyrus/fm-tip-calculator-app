@@ -1,0 +1,3 @@
+{
+  "stylelint.configFile": "${workspaceFolder}/stylelint.config.js"
+}
