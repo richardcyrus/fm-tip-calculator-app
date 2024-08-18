@@ -18,98 +18,91 @@ function App() {
           <div className="form-control">
             <label htmlFor="bill-amount">Bill</label>
             <input
-              type="text"
-              name="bill-amount"
+              className="input currency"
               id="bill-amount"
               inputMode="decimal"
-              title="Bill amount"
+              name="bill-amount"
+              pattern="[^0][0-9]*[.,]?[0-9]*"
               placeholder="0"
-              className="input currency"
+              required
+              title="Bill amount"
+              type="text"
             />
           </div>
-          <div>
-            <h2 className="legend">Select Tip %</h2>
-            <div className="tip-selections">
-              <div>
-                <input
-                  type="radio"
-                  name="tip-percent"
-                  id="five-percent"
-                  value="5"
-                />
-                <label htmlFor="five-percent" className="radio-control">
-                  5%
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="tip-percent"
-                  id="ten-percent"
-                  value="10"
-                />
-                <label htmlFor="ten-percent" className="radio-control">
-                  10%
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="tip-percent"
-                  id="fifteen-percent"
-                  value="15"
-                />
-                <label htmlFor="fifteen-percent" className="radio-control">
-                  15%
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="tip-percent"
-                  id="twentyfive-percent"
-                  value="25"
-                />
-                <label htmlFor="twentyfive-percent" className="radio-control">
-                  25%
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="tip-percent"
-                  value="50"
-                  id="fifty-percent"
-                />
-                <label htmlFor="fifty-percent" className="radio-control">
-                  50%
-                </label>
-              </div>
-              <div>
-                <input
-                  type="text"
-                  name="custom-tip-percent"
-                  id="custom-percent"
-                  inputMode="numeric"
-                  placeholder="Custom"
-                  className="input-tip"
-                />
-                <label htmlFor="custom-percent">
-                  <span className="sr-only">Custom</span>
-                </label>
-              </div>
+          <fieldset className="tip-selections">
+            <legend className="legend">Select Tip %</legend>
+            <div className="radio-control">
+              <input
+                id="five-percent"
+                name="tip-percent"
+                type="radio"
+                value="5"
+              />
+              <label htmlFor="five-percent">5%</label>
             </div>
-          </div>
+            <div className="radio-control">
+              <input
+                id="ten-percent"
+                name="tip-percent"
+                type="radio"
+                value="10"
+              />
+              <label htmlFor="ten-percent">10%</label>
+            </div>
+            <div className="radio-control">
+              <input
+                id="fifteen-percent"
+                name="tip-percent"
+                type="radio"
+                value="15"
+              />
+              <label htmlFor="fifteen-percent">15%</label>
+            </div>
+            <div className="radio-control">
+              <input
+                id="twentyfive-percent"
+                name="tip-percent"
+                type="radio"
+                value="25"
+              />
+              <label htmlFor="twentyfive-percent">25%</label>
+            </div>
+            <div className="radio-control">
+              <input
+                id="fifty-percent"
+                name="tip-percent"
+                type="radio"
+                value="50"
+              />
+              <label htmlFor="fifty-percent">50%</label>
+            </div>
+            <div>
+              <input
+                className="input-tip"
+                id="custom-percent"
+                inputMode="numeric"
+                name="custom-tip-percent"
+                placeholder="Custom"
+                type="text"
+              />
+              <label htmlFor="custom-percent" className="sr-only">
+                Custom
+              </label>
+            </div>
+          </fieldset>
           <div className="form-control">
             <label htmlFor="num-people">Number of People</label>
+            <div className="error">Can&apos;t be zero</div>
             <input
-              type="text"
-              name="num-people"
+              className="input people"
               id="num-people"
               inputMode="numeric"
-              title="Number of people"
+              name="num-people"
+              pattern="^[^0][0-9]*"
               placeholder="0"
-              className="input people"
+              required
+              title="Number of people"
+              type="text"
             />
           </div>
         </form>
@@ -134,9 +127,9 @@ function App() {
           </div>
           <div className="form-control">
             <button
-              type="reset"
-              form="tip-calculator"
               className="button btn-reset"
+              form="tip-calculator"
+              type="reset"
             >
               RESET
             </button>
