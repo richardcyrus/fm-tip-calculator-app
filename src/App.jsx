@@ -151,7 +151,7 @@ function App() {
               <p className="subtitle">/ person</p>
             </div>
             <div className="result-value">
-              <p>{state.tipPerPerson}</p>
+              <p data-testid="tip-per-person">{state.tipPerPerson}</p>
             </div>
           </div>
           <div className="total-result-data">
@@ -160,7 +160,9 @@ function App() {
               <p className="subtitle">/ person</p>
             </div>
             <div className="result-value">
-              <p>{state.totalPerPersonWithTip}</p>
+              <p data-testid="total-per-person">
+                {state.totalPerPersonWithTip}
+              </p>
             </div>
           </div>
           <div className="control">
