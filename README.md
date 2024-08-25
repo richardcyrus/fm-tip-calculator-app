@@ -45,7 +45,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL
+- [Solution URL](https://www.frontendmentor.io/solutions/tip-calculator-app-YfNBa9OmFk)
 - [Live Site URL](http://www.richardcyrus.com/fm-tip-calculator-app/)
 
 ## My process
