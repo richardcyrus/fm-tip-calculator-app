@@ -8,8 +8,14 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [The challenge](#the-challenge)
+    - [Screenshots](#screenshots)
+      - [Mobile Screenshot](#mobile-screenshot)
+      - [Tablet Screenshot](#tablet-screenshot)
+      - [Desktop Screenshot](#desktop-screenshot)
+    - [Links](#links)
   - [My process](#my-process)
     - [Built with](#built-with)
+    - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
   - [Author](#author)
 
@@ -23,7 +29,28 @@ Users should be able to:
 - See hover states for all interactive elements on the page
 - Calculate the correct tip and total cost of the bill per person
 
+### Screenshots
+
+#### Mobile Screenshot
+
+<img src="./screenshots/tip-calculator-mobile.jpg" alt="Mobile" height="30%" width="30%">
+
+#### Tablet Screenshot
+
+<img src="./screenshots/tip-calculator-tablet.jpg" alt="Tablet" height="70%" width="70%">
+
+#### Desktop Screenshot
+
+<img src="./screenshots/tip-calculator-desktop.jpg" alt="Desktop" height="70%" width="70%">
+
+### Links
+
+- Solution URL
+- [Live Site URL](http://www.richardcyrus.com/fm-tip-calculator-app/)
+
 ## My process
+
+I built the app as a single HTML/JSX page then added the interactivity with React.
 
 ### Built with
 
@@ -33,6 +60,12 @@ Users should be able to:
 - CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
+- [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
+- [Vitest](https://vitest.dev/) - Next Generation Testing Framework
+
+### Continued development
+
+- Refactor the React application into smaller components to compose the larger application.
 
 ### Useful resources
 
