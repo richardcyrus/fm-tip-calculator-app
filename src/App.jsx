@@ -2,6 +2,7 @@ import { useReducer } from 'react'
 import '~/App.css'
 import SplitterLogo from '~/assets/logo.svg?react'
 import FormControl from '~/components/FormControl/FormControl'
+import RadioControl from '~/components/RadioControl/RadioControl'
 
 function App() {
   const [state, dispatch] = useReducer(calculateTipReducer, initialState)
@@ -45,61 +46,16 @@ function App() {
           />
           <fieldset className="tip-selections">
             <legend className="legend">Select Tip %</legend>
-            <label htmlFor="five-percent" className="radio-control">
-              <input
-                id="five-percent"
-                name="tip-percent"
-                type="radio"
-                value="5"
-                checked={state.tipPercent === '5'}
-                onChange={onTipPercentChange}
+            {[5, 10, 15, 25, 50].map((value, index) => (
+              <RadioControl
+                inputChecked={state.tipPercent === value.toString()}
+                inputLabel={`${value}%`}
+                inputName="tip-percent"
+                inputValue={value.toString()}
+                key={index}
+                onInputChange={onTipPercentChange}
               />
-              5%
-            </label>
-            <label htmlFor="ten-percent" className="radio-control">
-              <input
-                id="ten-percent"
-                name="tip-percent"
-                type="radio"
-                value="10"
-                checked={state.tipPercent === '10'}
-                onChange={onTipPercentChange}
-              />
-              10%
-            </label>
-            <label htmlFor="fifteen-percent" className="radio-control">
-              <input
-                id="fifteen-percent"
-                name="tip-percent"
-                type="radio"
-                value="15"
-                checked={state.tipPercent === '15'}
-                onChange={onTipPercentChange}
-              />
-              15%
-            </label>
-            <label htmlFor="twentyfive-percent" className="radio-control">
-              <input
-                id="twentyfive-percent"
-                name="tip-percent"
-                type="radio"
-                value="25"
-                checked={state.tipPercent === '25'}
-                onChange={onTipPercentChange}
-              />
-              25%
-            </label>
-            <label htmlFor="fifty-percent" className="radio-control">
-              <input
-                id="fifty-percent"
-                name="tip-percent"
-                type="radio"
-                value="50"
-                checked={state.tipPercent === '50'}
-                onChange={onTipPercentChange}
-              />
-              50%
-            </label>
+            ))}
             <div className="input-tip">
               <input
                 id="custom-percent"
