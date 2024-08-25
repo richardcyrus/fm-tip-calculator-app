@@ -1,6 +1,7 @@
 import { useReducer } from 'react'
 import '~/App.css'
 import SplitterLogo from '~/assets/logo.svg?react'
+import FormControl from '~/components/FormControl/FormControl'
 
 function App() {
   const [state, dispatch] = useReducer(calculateTipReducer, initialState)
@@ -33,24 +34,15 @@ function App() {
       </header>
       <main id="calculator" className="container">
         <form id="tip-calculator" className="splitter-form">
-          <div className="form-control">
-            <label htmlFor="bill-amount">Bill</label>
-            <input
-              className={`input currency ${state.billAmountError && 'invalid'}`}
-              id="bill-amount"
-              inputMode="decimal"
-              name="bill-amount"
-              placeholder="0"
-              required
-              title="Bill amount"
-              type="text"
-              value={state.billAmount}
-              onChange={onBillAmountChange}
-            />
-            {state.billAmountError !== '' ? (
-              <div className="invalid-feedback">{state.billAmountError}</div>
-            ) : null}
-          </div>
+          <FormControl
+            error={state.billAmountError}
+            inputIcon="currency"
+            inputMode="decimal"
+            inputName="bill-amount"
+            inputValue={state.billAmount}
+            labelText="Bill"
+            onInputChange={onBillAmountChange}
+          />
           <fieldset className="tip-selections">
             <legend className="legend">Select Tip %</legend>
             <label htmlFor="five-percent" className="radio-control">
@@ -123,26 +115,15 @@ function App() {
               </label>
             </div>
           </fieldset>
-          <div className="form-control">
-            <label htmlFor="num-people">Number of People</label>
-            <input
-              className={`input people ${state.numberOfPeopleError && 'invalid'}`}
-              id="num-people"
-              inputMode="numeric"
-              name="num-people"
-              placeholder="0"
-              required
-              title="Number of people"
-              type="text"
-              value={state.numberOfPeople}
-              onChange={onNumberOfPeopleChange}
-            />
-            {state.numberOfPeopleError !== '' ? (
-              <div className="invalid-feedback">
-                {state.numberOfPeopleError}
-              </div>
-            ) : null}
-          </div>
+          <FormControl
+            error={state.numberOfPeopleError}
+            inputIcon="people"
+            inputMode="numeric"
+            inputName="num-people"
+            inputValue={state.numberOfPeople}
+            labelText="Number of People"
+            onInputChange={onNumberOfPeopleChange}
+          />
         </form>
         <div className="splitter-results">
           <div className="tip-result-data">
