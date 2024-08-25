@@ -31,7 +31,7 @@ function App() {
         <SplitterLogo className="logo splitter" />
         <h1 className="sr-only">Splitter</h1>
       </header>
-      <div id="calculator" className="container">
+      <main id="calculator" className="container">
         <form id="tip-calculator" className="splitter-form">
           <div className="form-control">
             <label htmlFor="bill-amount">Bill</label>
@@ -177,7 +177,7 @@ function App() {
             </button>
           </div>
         </div>
-      </div>
+      </main>
     </>
   )
 }
