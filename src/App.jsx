@@ -1,6 +1,8 @@
 import { useReducer } from 'react'
 import '~/App.css'
 import SplitterLogo from '~/assets/logo.svg?react'
+import FormControl from '~/components/FormControl/FormControl'
+import RadioControl from '~/components/RadioControl/RadioControl'
 
 function App() {
   const [state, dispatch] = useReducer(calculateTipReducer, initialState)
@@ -33,81 +35,27 @@ function App() {
       </header>
       <main id="calculator" className="container">
         <form id="tip-calculator" className="splitter-form">
-          <div className="form-control">
-            <label htmlFor="bill-amount">Bill</label>
-            <input
-              className={`input currency ${state.billAmountError && 'invalid'}`}
-              id="bill-amount"
-              inputMode="decimal"
-              name="bill-amount"
-              placeholder="0"
-              required
-              title="Bill amount"
-              type="text"
-              value={state.billAmount}
-              onChange={onBillAmountChange}
-            />
-            {state.billAmountError !== '' ? (
-              <div className="invalid-feedback">{state.billAmountError}</div>
-            ) : null}
-          </div>
+          <FormControl
+            error={state.billAmountError}
+            inputIcon="currency"
+            inputMode="decimal"
+            inputName="bill-amount"
+            inputValue={state.billAmount}
+            labelText="Bill"
+            onInputChange={onBillAmountChange}
+          />
           <fieldset className="tip-selections">
             <legend className="legend">Select Tip %</legend>
-            <label htmlFor="five-percent" className="radio-control">
-              <input
-                id="five-percent"
-                name="tip-percent"
-                type="radio"
-                value="5"
-                checked={state.tipPercent === '5'}
-                onChange={onTipPercentChange}
+            {[5, 10, 15, 25, 50].map((value, index) => (
+              <RadioControl
+                inputChecked={state.tipPercent === value.toString()}
+                inputLabel={`${value}%`}
+                inputName="tip-percent"
+                inputValue={value.toString()}
+                key={index}
+                onInputChange={onTipPercentChange}
               />
-              5%
-            </label>
-            <label htmlFor="ten-percent" className="radio-control">
-              <input
-                id="ten-percent"
-                name="tip-percent"
-                type="radio"
-                value="10"
-                checked={state.tipPercent === '10'}
-                onChange={onTipPercentChange}
-              />
-              10%
-            </label>
-            <label htmlFor="fifteen-percent" className="radio-control">
-              <input
-                id="fifteen-percent"
-                name="tip-percent"
-                type="radio"
-                value="15"
-                checked={state.tipPercent === '15'}
-                onChange={onTipPercentChange}
-              />
-              15%
-            </label>
-            <label htmlFor="twentyfive-percent" className="radio-control">
-              <input
-                id="twentyfive-percent"
-                name="tip-percent"
-                type="radio"
-                value="25"
-                checked={state.tipPercent === '25'}
-                onChange={onTipPercentChange}
-              />
-              25%
-            </label>
-            <label htmlFor="fifty-percent" className="radio-control">
-              <input
-                id="fifty-percent"
-                name="tip-percent"
-                type="radio"
-                value="50"
-                checked={state.tipPercent === '50'}
-                onChange={onTipPercentChange}
-              />
-              50%
-            </label>
+            ))}
             <div className="input-tip">
               <input
                 id="custom-percent"
@@ -123,26 +71,15 @@ function App() {
               </label>
             </div>
           </fieldset>
-          <div className="form-control">
-            <label htmlFor="num-people">Number of People</label>
-            <input
-              className={`input people ${state.numberOfPeopleError && 'invalid'}`}
-              id="num-people"
-              inputMode="numeric"
-              name="num-people"
-              placeholder="0"
-              required
-              title="Number of people"
-              type="text"
-              value={state.numberOfPeople}
-              onChange={onNumberOfPeopleChange}
-            />
-            {state.numberOfPeopleError !== '' ? (
-              <div className="invalid-feedback">
-                {state.numberOfPeopleError}
-              </div>
-            ) : null}
-          </div>
+          <FormControl
+            error={state.numberOfPeopleError}
+            inputIcon="people"
+            inputMode="numeric"
+            inputName="num-people"
+            inputValue={state.numberOfPeople}
+            labelText="Number of People"
+            onInputChange={onNumberOfPeopleChange}
+          />
         </form>
         <div className="splitter-results">
           <div className="tip-result-data">
