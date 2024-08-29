@@ -64,22 +64,87 @@ describe('Behavior', () => {
       await user.type(input, '0')
 
       expect(input).toHaveClass('invalid')
-      expect(
-        await screen.findByText("Can't be zero or less.")
-      ).toBeInTheDocument()
+      expect(await screen.findByText("Can't be zero.")).toBeInTheDocument()
     })
 
-    it('should show an error state when the value is less than zero', async () => {
+    it('should not accept non-numeric values', async () => {
       const user = userEvent.setup()
       render(<App />)
 
       const input = screen.getByLabelText('Bill')
+      await user.type(input, 'abc')
+
+      expect(input).toHaveValue('')
+    })
+  })
+
+  describe('when the `Custom` tip percentage is changed', () => {
+    it('should not accept a value less than zero', async () => {
+      const user = userEvent.setup()
+      render(<App />)
+
+      const input = screen.getByPlaceholderText('Custom')
       await user.type(input, '-1')
 
-      expect(input).toHaveClass('invalid')
-      expect(
-        await screen.findByText("Can't be zero or less.")
-      ).toBeInTheDocument()
+      expect(input).toHaveValue('1')
+    })
+
+    it('should not accept a value greater than 100', async () => {
+      const user = userEvent.setup()
+      render(<App />)
+
+      const input = screen.getByPlaceholderText('Custom')
+      await user.type(input, '101')
+
+      expect(input).toHaveValue('100')
+    })
+
+    it('should not accept non-numeric values', async () => {
+      const user = userEvent.setup()
+      render(<App />)
+
+      const input = screen.getByPlaceholderText('Custom')
+      await user.type(input, 'abc')
+
+      expect(input).toHaveValue('')
+    })
+
+    it('should not accept fractional values', async () => {
+      const user = userEvent.setup()
+      render(<App />)
+
+      const input = screen.getByPlaceholderText('Custom')
+      await user.type(input, '1.5')
+
+      expect(input).toHaveValue('5')
+    })
+  })
+
+  describe('when a Tip percentage is selected', () => {
+    it('should clear the custom tip if the amount is different', async () => {
+      const user = userEvent.setup()
+      render(<App />)
+
+      const customInput = screen.getByPlaceholderText('Custom')
+      await user.type(customInput, '20')
+
+      const radioInput = screen.getByLabelText('10%')
+      await user.click(radioInput)
+
+      expect(screen.getByPlaceholderText('Custom')).toHaveValue('')
+    })
+
+    it('should leave the custom tip if the amount is the same', async () => {
+      const user = userEvent.setup()
+      render(<App />)
+
+      const customInput = screen.getByPlaceholderText('Custom')
+      await user.type(customInput, '25')
+
+      const radioInput = screen.getByLabelText('25%')
+      await user.click(radioInput)
+
+      expect(screen.getByPlaceholderText('Custom')).toHaveValue('25')
     })
   })
 
@@ -92,22 +157,17 @@ describe('Behavior', () => {
       await user.type(input, '0')
 
       expect(input).toHaveClass('invalid')
-      expect(
-        await screen.findByText("Can't be zero or less.")
-      ).toBeInTheDocument()
+      expect(await screen.findByText("Can't be zero.")).toBeInTheDocument()
     })
 
-    it('should show an error state when the value is less than zero', async () => {
+    it('should not accept non-numeric values', async () => {
       const user = userEvent.setup()
       render(<App />)
 
       const input = screen.getByLabelText('Number of People')
-      await user.type(input, '-1')
+      await user.type(input, 'abc')
 
-      expect(input).toHaveClass('invalid')
-      expect(
-        await screen.findByText("Can't be zero or less.")
-      ).toBeInTheDocument()
+      expect(input).toHaveValue('')
     })
   })
 
