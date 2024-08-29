@@ -186,7 +186,7 @@ function formatCurrency(number) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   }).format(number)
 }
 
@@ -197,18 +197,34 @@ function formatCurrency(number) {
  * @returns {Object} The new state of the application.
  */
 function calculateTip(state) {
-  const { billAmount, tipPercent, numberOfPeople } = state
+  const { billAmount, tipPercent, customTipPercent, numberOfPeople } = state
 
   if (!billAmount || !tipPercent || !numberOfPeople) {
     // Validate inputs, for conditions that cause errors.
-    if (billAmount !== '' && billAmount <= 0) {
-      state = { ...state, billAmountError: "Can't be zero or less." }
+    if (billAmount !== '' && Number(billAmount) <= 0) {
+      state = { ...state, billAmountError: "Can't be zero." }
+    } else if (isNaN(Number(billAmount))) {
+      state = { ...state, billAmount: '' }
     } else {
       state = { ...state, billAmountError: '' }
     }
 
-    if (numberOfPeople !== '' && numberOfPeople <= 0) {
-      state = { ...state, numberOfPeopleError: "Can't be zero or less." }
+    if (tipPercent !== customTipPercent) {
+      state = { ...state, customTipPercent: '' }
+    } else if (customTipPercent !== '' && Number(customTipPercent) > 100) {
+      state = { ...state, customTipPercent: '100', tipPercent: '100' }
+    } else if (
+      isNaN(Number(customTipPercent)) ||
+      customTipPercent.includes('.') ||
+      (customTipPercent !== '' && Number(customTipPercent) < 0)
+    ) {
+      state = { ...state, customTipPercent: '', tipPercent: '' }
+    }
+
+    if (numberOfPeople !== '' && Number(numberOfPeople) <= 0) {
+      state = { ...state, numberOfPeopleError: "Can't be zero." }
+    } else if (isNaN(Number(numberOfPeople))) {
+      state = { ...state, numberOfPeople: '' }
     } else {
       state = { ...state, numberOfPeopleError: '' }
     }
