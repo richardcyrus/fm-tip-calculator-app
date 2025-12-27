@@ -141,6 +141,7 @@ body {
 }
 
 .sr-only:not(:focus, :active) {
+  /* stylelint-disable-next-line property-no-deprecated */
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
